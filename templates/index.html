@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .input-container {
+            margin: 20px;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+        #submitButton {
+            background-color: #0074D9;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Link cheeper</h1>
+    <div class="input-container">
+        <input type="text" id="inputField1" placeholder="alias">
+    </div>
+    <div class="input-container">
+        <input type="text" id="inputField2" placeholder="URL">
+    </div>
+    <h4>Duration</h4>
+    <select id="Dropdown">
+        <option value="1">one day</option>
+        <option value="2">two days</option>
+        <option value="3">three days</option>
+        <option value="4">four days</option>
+        <option value="5">five days</option>
+        <option value="6">six days</option>
+        <option value="6">one week</option>
+    </select><br><br>
+    <button id="submitButton">Submit</button>
+    <div id="successText"></div>
+
+    <script>
+        // JavaScript code to send the data to the server when the button is clicked
+        document.getElementById("submitButton").addEventListener("click", function() {
+            const diffDate = +document.getElementById("Dropdown").value;
+
+            const currentDate = new Date();
+            const endDate = new Date(currentDate);
+            endDate.setDate(currentDate.getDate() + diffDate)
+
+            const year = endDate.getFullYear();
+            const month = endDate.getMonth() + 1;
+            const day = endDate.getDate();
+
+
+            const text1 = document.getElementById("inputField1").value;
+            const text2 = document.getElementById("inputField2").value;
+            const destDate = [year, month, day];
+
+            fetch("makenewlink", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    alias: text1,
+                    info: {
+                        url: text2,
+                        until: destDate
+                    }
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Data sent successfully.");
+                    return response.json()
+                } else {
+                    // Handle error
+                    console.error("Error sending data to the server.");
+                }
+            })
+            .then(data => {
+                console.log(data);
+                if (data.status === "ok") {
+                    const cont = document.getElementById("successText");
+
+                    cont.textContent = data.message;
+
+                    setTimeout(function() {
+                        cont.textContent = "";
+                    }, 3000);
+                }
+                else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Network error:", error);
+            });
+        });
+    </script>
+</body>
+</html>

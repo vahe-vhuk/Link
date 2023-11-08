@@ -1,0 +1,52 @@
+{
+   "response": {
+      "dwqdqw": {
+         "url": "https://stackoverflow.com/questions/4041447/how-is-stdtuple-implemented",
+         "until": [
+            2023,
+            11,
+            10
+         ]
+      },
+      "google": {
+         "url": "https://google.com",
+         "until": [
+            2023,
+            11,
+            13
+         ]
+      },
+      "sec": {
+         "url": "https://www.google.com/search?q=day+in+seconds&oq=day+in+sec&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyCQgBEEUYORiABDIGCAIQBhhA0gEINTQwMGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8",
+         "until": [
+            2023,
+            11,
+            13
+         ]
+      },
+      "alias": {
+         "url": "https://www.youtube.com/watch?v=NJs0zubNDIU",
+         "until": [
+            2023,
+            11,
+            11
+         ]
+      },
+      "erkar": {
+         "url": "https://docs.google.com/spreadsheets/d/1ym1_dBexMn7i-4i2UGrPJyqWLk7GbTJw8owC0JrWS_8/edit#gid=497793802",
+         "until": [
+            2023,
+            11,
+            9
+         ]
+      },
+      "rty": {
+         "url": "https://docs.google.com/spreadsheets/d/1ym1_dBexMn7i-4i2UGrPJyqWLk7GbTJw8owC0JrWS_8/edit#gid=497793802",
+         "until": [
+            2023,
+            11,
+            10
+         ]
+      }
+   }
+}
